@@ -1,5 +1,0 @@
-int simpleArraySum(vector<int> ar) {
-    int sum = 0;
-    
-    return accumulate(ar.begin(), ar.end(), sum);
-}
