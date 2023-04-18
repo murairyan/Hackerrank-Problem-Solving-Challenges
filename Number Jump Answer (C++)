@@ -1,0 +1,22 @@
+/*
+* Complete the "Number Jump" function below.
+*
+* The function is expected to return a STRING.
+* The function accepts INT X1, INT X2, INT V1, INT V2.
+*/
+
+string kangaroo(int x1, int v1, int x2, int v2) {
+    string result = "NO";
+    
+    while(v1 <= v2) {
+        x1 += v1;
+        x2 += v2;
+        
+        if(x1 == x2) {
+            result = "YES";
+            return result;
+        }
+    }
+    
+    return result;
+}
