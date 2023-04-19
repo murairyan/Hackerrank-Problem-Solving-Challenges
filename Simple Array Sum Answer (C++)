@@ -1,7 +1,7 @@
 /* 
 * Complete the "simpleArraySum" function below.
 *
-* The function returns an INT value.
+* The function is expected to return an INT.
 * The function accepts INTEGER_ARRAY ar as parameter.
 */
 
