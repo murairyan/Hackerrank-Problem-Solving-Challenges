@@ -1,4 +1,10 @@
-void countApplesAndoranges (int s, int t, int a, int b, vector‹int> apples, V vector‹int› oranges) {
+/*
+* Complete the "countApplesAndOranges" function below.
+*
+* The function accepts INT s, INT t, INT a, INT b, INTEGER_ARRAY apples, INTEGER_ARRAY oranges as parameters.
+*/
+
+void countApplesAndoranges (int s, int t, int a, int b, vector<int> apples, vector<int> oranges) {
     int appleCount = 0, orangeCount = 0;
     
     // Apple Count
