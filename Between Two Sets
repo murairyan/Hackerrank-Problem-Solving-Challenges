@@ -1,0 +1,38 @@
+/*
+ * Complete the 'getTotalX' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER_ARRAY a
+ *  2. INTEGER_ARRAY b
+ */
+
+int getTotalX(vector<int> a, vector<int> b) {
+    // int varible to keep count on which #'s divide evenly between two sets
+    int count = 0;
+    
+    // Brute force method by running through all integer values that exist
+    // within the input constraints 1 <= array <= 100
+    for(int i = 1; i <= 100; i++) {
+        // Bool condition to see if the integer being tested is a factor 
+        // for both array a and b
+        bool state = true;
+        
+        // Checking array a
+        for(int j = 0; j < a.size(); j++) {
+            // if state is false then the number being tested is no good
+            if(i % a[j] != 0)
+                state = false;
+        }
+        for(int k = 0; k < b.size(); k++) {
+            if(b[k] % i != 0)
+                state = false;
+        }
+        
+        // if integer is a factor for both array a and b then count goes up
+        if(state == true)
+            count++;
+    }
+    
+    return count;
+}
