@@ -1,0 +1,30 @@
+/*
+ * Complete the 'bonAppetit' function below.
+ *
+ * The function accepts following parameters:
+ *  1. INTEGER_ARRAY bill
+ *  2. INTEGER k
+ *  3. INTEGER b
+ */
+
+void bonAppetit(vector<int> bill, int k, int b) {
+    // int value to calculate how much Anna needs to pay for her share
+    int paid = 0;
+    
+    // For loop to iterate through the bill array to add up the sum
+    for(int i = 0; i < bill.size(); i++) {
+        paid += bill[i];
+    }
+    
+    // To remove the one item that Anna didn't eat and then split the bill
+    paid = (paid - bill[k]) / 2;
+    
+    // int b is the value that Brian charged Anna for the sum of all the items
+    if(b == paid)
+        cout << "Bon Appetit" << endl;
+    
+    // statement to show how much Brian overcharged Anna by x amount  
+    else {
+        cout << b - paid << endl;
+    }
+}
