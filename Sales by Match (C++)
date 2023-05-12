@@ -1,0 +1,30 @@
+/*
+ * Complete the 'sockMerchant' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER n
+ *  2. INTEGER_ARRAY ar
+ */
+
+int sockMerchant(int n, vector<int> ar) {
+    int pairs = 0;
+    
+    // Sorting to make it easier to find pairs in the array
+    sort(ar.begin(),ar.end());
+    
+    for(int i = 0; i < ar.size();) {
+        if(ar[i] == ar[i + 1]) {
+            pairs++;
+            
+            // Skip the element of the current pair if a pair is found
+            i = i + 2;
+        }
+        else {
+            // Keep going if a pair is not found
+            i++;
+        }
+    }
+    
+    return pairs;
+}
