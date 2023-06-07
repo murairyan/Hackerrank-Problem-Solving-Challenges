@@ -1,0 +1,16 @@
+// Complete the catAndMouse function below.
+string catAndMouse(int x, int y, int z) {
+    // has to return a string
+    string winner;
+    
+    // using absolute since z could be greater than x and/or y, so to keep it
+    // positive and make the comparison between the cats' distances easier
+    if(abs(x - z) < abs(y - z))
+        winner = "Cat A";
+    else if(abs(x - z) > abs(y - z))
+        winner = "Cat B";
+    else
+        winner = "Mouse C";
+
+    return winner;
+}
