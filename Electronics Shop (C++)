@@ -1,0 +1,26 @@
+/*
+ * Complete the getMoneySpent function below.
+ */
+int getMoneySpent(vector<int> keyboards, vector<int> drives, int b) {
+    // expensive value to find most expensive pair and to reset when function
+    // is called again
+    int expensive = 0;
+    
+    for(int i = 0; i < keyboards.size(); i++) {
+        for(int k = 0; k < drives.size(); k++) {
+            // temp value to compare each pair of keyboard and drive
+            int temp = keyboards[i] + drives[k];
+            // Have to be aware that the expensive pair doesn't go over budget
+            if(temp > expensive && temp <= b)
+                expensive = temp;
+        }
+    }
+    
+    // As long as the pair is greater than 0, that means there is an expensive
+    // pair that exists. If not, that just means that none of the pairs are 
+    // under the budget (b).
+    if(expensive > 0)
+        return expensive;
+    else
+        return -1;
+}
