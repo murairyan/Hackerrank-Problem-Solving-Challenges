@@ -1,0 +1,31 @@
+/*
+ * Complete the 'countingValleys' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER steps
+ *  2. STRING path
+ */
+
+int countingValleys(int steps, string path) {
+    // valley counts how many valleys traversed and clevel is to know when 
+    // the hiker has ended the trail
+    int valley = 0, clevel = 0;
+    
+    for(int i = 0; i < steps; i++) {
+        // If string path has "U" in it then the sea level raises by one unit
+        if(path[i] == 'U') {
+            clevel++;
+            
+            // This will be used to check if the hiker has exited the valley if they have gone up and reaches sea level = 0.
+            // The condition set by the problem in which a valley traversed must end after going up("U").
+            if(clevel == 0) 
+                valley++;
+        }
+        // Else the sea level will go down one unit
+        else
+            clevel--;
+    }
+    
+    return valley;
+}
