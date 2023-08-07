@@ -1,0 +1,19 @@
+/*
+ * Complete the 'pageCount' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER n
+ *  2. INTEGER p
+ */
+
+int pageCount(int n, int p) {
+    // In the event that the required page is on the first page or the 
+    // starting page is already where it needs to be
+    if(p == 1 || p == n)
+        return 0;
+    
+    // Else, need to flip through both front and back and see what has the 
+    // minimum number of flips
+    return min(p/2, n/2 - p/2);
+}
