@@ -1,0 +1,46 @@
+/*
+ * Complete the 'climbingLeaderboard' function below.
+ *
+ * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts following parameters:
+ *  1. INTEGER_ARRAY ranked
+ *  2. INTEGER_ARRAY player
+ */
+
+vector<int> climbingLeaderboard(vector<int> ranked, vector<int> player) { 
+    int rank = 1;
+    
+    // For loop used to see the total number of ranks on the leaderboard
+    for(int i = 0; i < ranked.size() - 1; i++) {
+        if(ranked[i] != ranked[i + 1]) {
+            rank++;
+        }
+    }
+    // Increase the rank by one more since Alice is being added to the board
+        rank++;
+        
+    // Setting k to be the size of the ranked array     
+        int k = ranked.size() - 1;
+        
+        for(int i = 0; i < player.size();) {
+    // Looking through the duplicates of the ranked array
+            if(ranked[k] == ranked[k - 1])
+                k--;
+    
+    // Comparing the score of the player to the leaderboard
+            else if(player[i] >= ranked[k]){
+            // Checking if the rank needs to be put up or down the board
+                if(rank > 1)
+                    rank--;
+                k--;
+            }
+            
+    // Output the scores of each attempt for Alice
+            else {
+                player[i] = rank;
+                i++;
+            }
+        }
+    
+    return player;
+}
