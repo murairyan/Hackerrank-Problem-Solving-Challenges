@@ -1,0 +1,26 @@
+/*
+ * Complete the 'findDigits' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts INTEGER n as parameter.
+ */
+
+int findDigits(int n) {
+    // count is used to see if the digit is a divisor of the integer
+    // and num is a int type to hold the integer that fills the parameter
+    int count = 0, num = n; 
+
+    // This loop is used to extract each digit from its respective integer
+    // and moves from each tenth place in the reverse order
+    // ex) int = "12" -> digits extracted in this order = "2, 1"
+    while(num > 0) {
+        int digit = num % 10;
+        num /= 10;
+        // Making sure the digit isn't a 0 and that the remainder is a 0
+        if(digit != 0 && n % digit == 0) {
+            count++;
+        }
+    }
+    
+    return count;
+}
