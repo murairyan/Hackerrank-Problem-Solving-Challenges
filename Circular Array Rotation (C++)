@@ -1,0 +1,34 @@
+/*
+ * Complete the 'circularArrayRotation' function below.
+ *
+ * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts following parameters:
+ *  1. INTEGER_ARRAY a
+ *  2. INTEGER k
+ *  3. INTEGER_ARRAY queries
+ */
+
+vector<int> circularArrayRotation(vector<int> a, int k, vector<int> queries) {
+    // Not necessary but makes it seem cleaner in the implementation
+    int size = a.size();
+    // Creating two new int arrays to hold the rearranged elements
+    vector<int> newArray(a.size()), result;
+    
+    // Instead of shifting the numbers each loop, just do them all at once
+    // (i + k) is meant to see where the new numbers will be located
+    // on the array whilst (i + k) % size will make sure that it does
+    // not go out of bounds
+    for(int i = 0; i < a.size(); i++) {
+        newArray[(i + k) % size] = a[i];
+    }
+    
+    // Will copy the elements from the new array to the array that will
+    // output the new array's order of elements
+    for(int i = 0; i < queries.size(); i++) {
+        // Uncertain why newArray needs to have queries[i] in its parameter
+        // but it works
+        result.push_back(newArray[queries[i]]);
+    }
+    
+    return result;
+}
