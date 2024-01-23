@@ -1,0 +1,30 @@
+/*
+ * Complete the 'angryProfessor' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts following parameters:
+ *  1. INTEGER k
+ *  2. INTEGER_ARRAY a
+ */
+
+string angryProfessor(int k, vector<int> a) {
+    // Int variable that will count if there are enough attending students
+    // Have to set it to 0 because there may be more than one test case and the variable shouldn't hold the value of the previous test
+    int here = 0;
+    
+    for(int i = 0; i < a.size(); i++) {
+        // See what students made it on time 
+        if(a[i] <= 0) {
+            here++;
+        }
+    }
+    
+    // Int k is the at least amount professor wants to not cancel class
+    if(here >= k) {
+        // NO means that class is not cancelled
+        return "NO";
+    }
+    else {
+        return "YES";
+    }
+}
