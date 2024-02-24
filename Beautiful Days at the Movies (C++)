@@ -1,0 +1,46 @@
+/*
+ * Complete the 'beautifulDays' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER i
+ *  2. INTEGER j
+ *  3. INTEGER k
+ */
+
+int beautifulDays(int i, int j, int k) {
+    // beautiful is the variable to count the days to go movies
+    int beautiful = 0;
+    
+    // This while loop will cycle through the array of integers, starting
+    // from the beginning day number and running until the ending day
+    while (i <= j) {
+    // reverse is the value that will be used to subtract with the
+    // original number; temp holds the subtracted value        
+        int temp = 0, reverse = 0;
+        int start = i;
+        
+        // This while loop will reverse the order of the integer for the
+        // subtraction
+        while(start > 0) {
+            reverse = reverse * 10 + start % 10;
+   
+            start /= 10;
+        }
+    
+        // Grabbing the new value
+        temp = abs(i - reverse);
+        
+        // If statement to check if the temp value from subtracting the
+        // integer and its reverse is a whole number or not after the divisor
+        if(temp % k == 0) {
+            beautiful++;
+        }
+        
+        // Need this in order to move onto the next int and to eventually
+        // exit the while loop
+        i++;
+    }
+    
+    return beautiful;
+}
