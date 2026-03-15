@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+
+
+/*
+ * Complete the 'isAlphabeticPalindrome' function below.
+ *
+ * The function is expected to return a BOOLEAN.
+ * The function accepts STRING code as parameter.
+ */
+
+bool isAlphabeticPalindrome(string code) {
+    // create endpoints that will parse through the string like an array
+    int left = 0;
+    int right = code.length() -1;
+    
+    while (left < right) {
+        // Move the left pointer inward until it finds an alphanumeric character.
+        while (left < right && !std::isalnum(code[left])) {
+            left++;
+        }
+         
+        // Move the right pointer inward until it finds an alphanumeric character.   
+        while (left < right && std::isalnum(code[right])) {
+            right--;
+        }    
+        
+        // Will compare the two characters to see if they do not match (case insensitivity)
+        if (left < right && tolower(code[left]) != tolower(code[right])) {
+            return 0;
+        }
+        
+        // Move the pointers inwards for the next comparison.
+        left++;
+        right--;
+    }
+    
+    // If code did not return a 0 yet, then it will yield a boolean value and return as true.
+    return 1;
+}
+
+int main()
+{
+    string code;
+    getline(cin, code);
+
+    bool result = isAlphabeticPalindrome(code);
+
+    cout << result << "\n";
+
+    return 0;
+}
