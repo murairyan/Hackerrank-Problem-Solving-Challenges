@@ -14,22 +14,23 @@ using namespace std;
 bool isAlphabeticPalindrome(string code) {
     // create endpoints that will parse through the string like an array
     int left = 0;
-    int right = code.length() -1;
+    int right = code.length() - 1;
     
     while (left < right) {
         // Move the left pointer inward until it finds an alphanumeric character.
-        while (left < right && !std::isalnum(code[left])) {
+        // isalpha a function to determine if the index is alphabetical which in this question is what we want to find
+        while (left < right && !std::isalpha(code[left])) {
             left++;
         }
          
         // Move the right pointer inward until it finds an alphanumeric character.   
-        while (left < right && std::isalnum(code[right])) {
+        while (left < right && !std::isalpha(code[right])) {
             right--;
         }    
         
         // Will compare the two characters to see if they do not match (case insensitivity)
-        if (left < right && tolower(code[left]) != tolower(code[right])) {
-            return 0;
+        if (tolower(code[left]) != tolower(code[right])) {
+            return false;
         }
         
         // Move the pointers inwards for the next comparison.
@@ -38,17 +39,5 @@ bool isAlphabeticPalindrome(string code) {
     }
     
     // If code did not return a 0 yet, then it will yield a boolean value and return as true.
-    return 1;
-}
-
-int main()
-{
-    string code;
-    getline(cin, code);
-
-    bool result = isAlphabeticPalindrome(code);
-
-    cout << result << "\n";
-
-    return 0;
+    return true;
 }
