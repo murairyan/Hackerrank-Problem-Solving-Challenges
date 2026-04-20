@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+
+
+
+/*
+ * Complete the 'countResponseTimeRegressions' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts INTEGER_ARRAY responseTimes as parameter.
+ */
+
+int countResponseTimeRegressions(vector<int> responseTimes) {
+    
+    // This if statement will automatically exit the code if it meets the condition that there is only one day
+    if(responseTimes.size() < 1) {
+        return 0;
+    }
+    
+    // Simplify the size of the array we are parsing through to a easier variable to type out
+    int n = responseTimes.size();
+    int count = 0;
+    
+    // for loop to run through the entire array and starting at the second element because there is nothing to compare in the first element
+    for(int i = 1; i < n; i++) {
+        // Changed the variable type to long long because there could be integer overflow in some edge cases
+        long long sum = 0, current = responseTimes[i];
+        
+        // This for loop will gather the sum amount of the previous days up to the current day being looked into
+        for(int j = 0; j < i; j++) {
+            sum += responseTimes[j];
+        }
+        
+        // Double variable is designed to ensure any floating points due to the division factor and to gather the average of the previous days for the test cases
+        double average = (double)sum / i;
+        
+        // Compare the current day to the average of the previous days
+        if(current > average) {
+            count++;
+        }
+    }
+    
+    return count;
+}
