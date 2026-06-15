@@ -1,0 +1,40 @@
+/*
+ * Complete the 'formingMagicSquare' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts 2D_INTEGER_ARRAY s as parameter.
+ */
+
+int formingMagicSquare(vector<vector<int>> s) {
+    //8 is the number of possible combinations to fulfill the condition set for the challenge. 3 represents the number of rows and columns, so therefore it is a 3x3 matrix
+    int magic_squares[8][3][3] = {
+        {{8, 1, 6}, {3, 5, 7}, {4, 9, 2}},
+        {{6, 1, 8}, {7, 5, 3}, {2, 9, 4}},
+        {{4, 9, 2}, {3, 5, 7}, {8, 1, 6}},
+        {{2, 9, 4}, {7, 5, 3}, {6, 1, 8}},
+        {{8, 3, 4}, {1, 5, 9}, {6, 7, 2}},
+        {{4, 3, 8}, {9, 5, 1}, {2, 7, 6}},
+        {{6, 7, 2}, {1, 5, 9}, {8, 3, 4}},
+        {{2, 7, 6}, {9, 5, 1}, {4, 3, 8}}
+    };
+    
+    //Set the constraint to the highest variable int can go to prepare the parsing of all existing combinations
+    int min_cost = INT_MAX;
+    
+    //This for loop will be used to sort through the 8 different combinations
+    for(int i = 0; i < 8; i++) {
+        int current_cost = 0;
+    
+    //These nested for loop will iterate through the rows and columns of the given matrix in relation to the 8 different types of matrices. This will then compare what values are the same and if not, there will be a number to be stored and added to int variable "current_cost"
+    for(int rows = 0; rows < 3; rows++) {
+        for(int col = 0; col < 3; col++) {
+            current_cost += abs(s[rows][col] - magic_squares[i][rows][col]);
+        }
+    }
+    
+    //This will compare the two int variables and see which of the two has the minimum value in comparison to the other because that is the condition that was set. 
+    min_cost = min(min_cost, current_cost);
+    }
+    
+    return min_cost;
+}
