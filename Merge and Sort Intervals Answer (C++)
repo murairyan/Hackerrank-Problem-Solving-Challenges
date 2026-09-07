@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+vector<string> split(const string &);
+
+
+
+/*
+ * Complete the 'mergeHighDefinitionIntervals' function below.
+ *
+ * The function is expected to return a 2D_INTEGER_ARRAY.
+ * The function accepts 2D_INTEGER_ARRAY intervals as parameter.
+ */
+
+vector<vector<int>> mergeHighDefinitionIntervals(vector<vector<int>> intervals) {
+    
+    // To ensure that if there is only one or less element present in the intervals, then it will end the function and prevent a segmentation fault
+    if(intervals.size() <= 1)
+        return intervals;
+    
+    // Another factor to make sure all the intervals are within reason of following through with (start time, end time) layout for the problem
+    sort(intervals.begin(), intervals.end());
+    
+    // Using "push_back" function helps prevent the "Look Ahead" index error, where the comparison will avoid reading past the the end of the array (out_of_bounds)
+    vector<vector<int>> merged;
+    merged.push_back(intervals[0]);
+    
+    // It is good practice to utilize variable "size_t" instead of int because it is more compatiable in the long run where int might not have the ability to compensate for larger elements/memory space
+    for(int i = 1; i < intervals.size(); i++) {
+        // Compare current interval start with the last merged interval end
+        if(merged.back()[1] >= intervals[i][0]) {
+            // Overlap detected; update the end time to the maximum of the two intervals
+            merged.back()[1] = max(merged.back()[1], intervals[i][1]);
+        }
+        else {
+            // No overlap; add new interval
+            merged.push_back(intervals[i]);
+        }
+    }
+    
+    return merged;
+}
